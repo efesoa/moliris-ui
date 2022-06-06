@@ -9,7 +9,7 @@ import Container from '@mui/material/Container';
 import Fab from '@mui/material/Fab';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Zoom from '@mui/material/Zoom';
-import {Button, Divider, Grid, Menu, MenuItem, Popover, Tabs} from "@mui/material";
+import {Button, Divider, Grid, Menu, MenuItem, Popover, Tabs, TextField} from "@mui/material";
 import { styled } from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
 import ListItemIcon from '@mui/material/ListItemIcon';
@@ -18,6 +18,7 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import Avatar from '@mui/material/Avatar';
 import SwipeMenuDrawer from "./SwipeMenuDrawer";
+import {Email} from "@mui/icons-material";
 
 interface Props {
     window?: () => Window;
@@ -96,31 +97,32 @@ function MouseOverPopover() {
 
     return (
         <div>
-            <Typography
+            <TextField
                 aria-owns={open ? 'iris-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleOpen}
-            >
-                <Button
-                    variant="text"
-                    sx={{
-                        ':hover': {
-                            bgcolor: 'primary.main', // theme.palette.primary.main
-                            color: 'white',
-                        },
-                    }}
-                >
-                    Hover
-                </Button>
-            </Typography>
+                variant='outlined' size='small' sx={{ width: '41%', py: 2 }} placeholder='Feedback' />
+
+                {/*<Button*/}
+                {/*    variant="text"*/}
+                {/*    sx={{*/}
+                {/*        ':hover': {*/}
+                {/*            bgcolor: 'primary.main', // theme.palette.primary.main*/}
+                {/*            color: 'white',*/}
+                {/*        },*/}
+                {/*    }}*/}
+                {/*>*/}
+                {/*    Hover*/}
+                {/*</Button>*/}
 
             <Menu
                 anchorEl={anchorEl}
                 id="iris-menu"
                 open={open}
                 onClose={handleClose}
-                MenuListProps={{ onMouseLeave: handleClose }}
+                onMouseLeave={handleClose}
+                // MenuListProps={{ onMouseLeave: handleClose }}
 
                 PaperProps={{
                     elevation: 0,
@@ -128,12 +130,8 @@ function MouseOverPopover() {
                         overflow: 'visible',
                         filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
                         mt: 1.5,
-                        '& .MuiAvatar-root': {
-                            width: 32,
-                            height: 32,
-                            ml: -0.5,
-                            mr: 1,
-                        },
+                        px: 2,
+
                         '&:before': {
                             content: '""',
                             display: 'block',
@@ -151,12 +149,23 @@ function MouseOverPopover() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <MenuItem>
-                    Similarity
-                </MenuItem>
-                <MenuItem>
-                    K Similar Objects
-                </MenuItem>
+                <Box sx={{  }}>
+                    <p>
+                        <label style={{ color: '#808080' }} >Email</label><br/>
+                        <TextField variant='outlined' size={"small"} placeholder="Your email address" fullWidth />
+                    </p>
+                    <p>
+                        <label style={{ color: '#808080' }} >Feedback</label><br/>
+                        <TextField
+                            placeholder="Your feedback message"
+                            multiline
+                            rows={4}
+                            size="small"
+                            variant="outlined"
+                        />
+                    </p>
+                </Box>
+
             </Menu>
         </div>
     );
@@ -173,35 +182,41 @@ export default function Navbar(props: Props) {
                 sx={{ background: '#FFFFFF',
                     color: '#808080',
                     // alignItems: 'center',
-
                     }}>
-                    <Toolbar>
-                        <Typography variant="h6" component="div" sx={{pr: 10}}>
+                    <Toolbar variant='dense'>
+                        <Typography variant="h6" sx={{ pr: 10 }}>
                             Moliris
                         </Typography>
-                        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                        <Box sx={{  display: { xs: 'none', md: 'flex', lg: 'flex' } }}>
                             {pages.map((page) => (
                             <Button
                                 key={page}
                                 variant="text"
                                 // onClick={handleCloseNavMenu}
-                                sx={{ my: 2,
+                                sx={{ m: 2,
                                     px: 2,
+                                    textTransform: 'none',
                                     color: '#808080',
-                                    display: 'block',
+                                    // display: 'block',
                                     ':hover': {
                                         bgcolor: '#FFFFFF',
                                         color: '#000000',
                                     },
                                 }}
                             >
-                                {page}
+                                <Typography>
+                                    {page}
+                                </Typography>
                             </Button>
                         ))}
+                            {/*<TextField variant='outlined' size='small' sx={{ width: '15%', py: 2, ml: 'auto' }} placeholder='FeedBack' />*/}
                         </Box>
-                        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none', alignItems: 'flex-end' } }}>
-                        <SwipeMenuDrawer />
-                    </Box>
+                        <Box sx={{ flexGrow: 1 }} />
+                        <Box sx={{ display: { xs: 'none', md: 'flex', lg: 'flex' }, ml: 'auto' }}>
+                            <MouseOverPopover /></Box>
+                        <Box sx={{ display: { xs: 'flex', md: 'none', lg: 'none'}, ml: 'auto', m: 2 }}>
+                            <SwipeMenuDrawer />
+                        </Box>
                     </Toolbar>
                 </AppBar>
             </ElevationScroll>
