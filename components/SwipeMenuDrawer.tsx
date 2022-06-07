@@ -10,15 +10,13 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 
-type Anchor = 'top' | 'left' | 'bottom' | 'right';
+type Anchor = 'left';
 
 export default function SwipeableMenuDrawer() {
     const [state, setState] = React.useState({
-        top: false,
         left: false,
-        bottom: false,
-        right: false,
     });
 
     const toggleDrawer =
@@ -38,7 +36,7 @@ export default function SwipeableMenuDrawer() {
 
     const list = (anchor: Anchor) => (
         <Box
-            sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+            // sx={{ width: anchor === 'left' ? 'auto' : 400 }}
             role="presentation"
             onClick={toggleDrawer(anchor, false)}
             onKeyDown={toggleDrawer(anchor, false)}
@@ -73,9 +71,10 @@ export default function SwipeableMenuDrawer() {
 
     return (
         <div>
-            {(['left', 'right', 'top', 'bottom'] as const).map((anchor) => (
+            {(['left'] as const).map((anchor) => (
                 <React.Fragment key={anchor}>
-                    <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+                    <Button onClick={toggleDrawer(anchor, true)}><MenuOutlinedIcon /></Button>
+                    {/*<Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>*/}
                     <SwipeableDrawer
                         anchor={anchor}
                         open={state[anchor]}

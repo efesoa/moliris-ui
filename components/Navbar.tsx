@@ -9,16 +9,11 @@ import Container from '@mui/material/Container';
 import Fab from '@mui/material/Fab';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Zoom from '@mui/material/Zoom';
-import {Button, Divider, Grid, Menu, MenuItem, Popover, Tabs, TextField} from "@mui/material";
+import {Button, Divider, Grid, Menu, MenuItem, Popover, TextField} from "@mui/material";
 import { styled } from '@mui/material/styles'
 import Paper from '@mui/material/Paper'
-import ListItemIcon from '@mui/material/ListItemIcon';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
-import Logout from '@mui/icons-material/Logout';
-import Avatar from '@mui/material/Avatar';
 import SwipeMenuDrawer from "./SwipeMenuDrawer";
-import {Email} from "@mui/icons-material";
+
 
 interface Props {
     window?: () => Window;
@@ -97,24 +92,16 @@ function MouseOverPopover() {
 
     return (
         <div>
-            <TextField
+            <Button
                 aria-owns={open ? 'iris-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleOpen}
-                variant='outlined' size='small' sx={{ width: '41%', py: 2 }} placeholder='Feedback' />
-
-                {/*<Button*/}
-                {/*    variant="text"*/}
-                {/*    sx={{*/}
-                {/*        ':hover': {*/}
-                {/*            bgcolor: 'primary.main', // theme.palette.primary.main*/}
-                {/*            color: 'white',*/}
-                {/*        },*/}
-                {/*    }}*/}
-                {/*>*/}
-                {/*    Hover*/}
-                {/*</Button>*/}
+                variant='outlined'
+                sx={{ textTransform: 'none' }}
+            >
+                Feedback
+            </Button>
 
             <Menu
                 anchorEl={anchorEl}
@@ -149,14 +136,15 @@ function MouseOverPopover() {
                 transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                 anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
             >
-                <Box sx={{  }}>
+                <form action="" method="post">
                     <p>
                         <label style={{ color: '#808080' }} >Email</label><br/>
-                        <TextField variant='outlined' size={"small"} placeholder="Your email address" fullWidth />
+                        <TextField type='email' variant='outlined' size={"small"} placeholder="Your email address" fullWidth />
                     </p>
                     <p>
                         <label style={{ color: '#808080' }} >Feedback</label><br/>
                         <TextField
+                            type='text'
                             placeholder="Your feedback message"
                             multiline
                             rows={4}
@@ -164,7 +152,11 @@ function MouseOverPopover() {
                             variant="outlined"
                         />
                     </p>
-                </Box>
+                    <Divider />
+                    <Box sx={{ pl: 23, pt: 1 }} >
+                        <Button type='submit' variant='contained' sx={{ textTransform: 'none' }} size='small'>Submit</Button>
+                    </Box>
+                </form>
 
             </Menu>
         </div>
@@ -184,7 +176,7 @@ export default function Navbar(props: Props) {
                     // alignItems: 'center',
                     }}>
                     <Toolbar variant='dense'>
-                        <Typography variant="h6" sx={{ pr: 10 }}>
+                        <Typography variant="h6" sx={{ display: { xs: 'none', md: 'flex', lg: 'flex' }, pr: 10 }}>
                             Moliris
                         </Typography>
                         <Box sx={{  display: { xs: 'none', md: 'flex', lg: 'flex' } }}>
@@ -211,12 +203,30 @@ export default function Navbar(props: Props) {
                         ))}
                             {/*<TextField variant='outlined' size='small' sx={{ width: '15%', py: 2, ml: 'auto' }} placeholder='FeedBack' />*/}
                         </Box>
-                        <Box sx={{ flexGrow: 1 }} />
+                        {/*<Box sx={{ flexGrow: 1 }} />*/}
                         <Box sx={{ display: { xs: 'none', md: 'flex', lg: 'flex' }, ml: 'auto' }}>
-                            <MouseOverPopover /></Box>
-                        <Box sx={{ display: { xs: 'flex', md: 'none', lg: 'none'}, ml: 'auto', m: 2 }}>
-                            <SwipeMenuDrawer />
+                            <MouseOverPopover />
                         </Box>
+
+                        <Grid container
+                              direction="row"
+                              justifyContent="space-between"
+                              alignItems="center"
+                              sx={{ display: { xs: 'flex', md: 'none', lg: 'none'}, py: 2 }}
+                        >
+                            <Grid item >
+                                <SwipeMenuDrawer />
+                            </Grid>
+                            <Grid item >
+                                <Typography variant="h6" >
+                                    Moliris
+                                </Typography>
+                            </Grid>
+                            <Grid item >
+                                <MouseOverPopover />
+                                {/*<Button>HI</Button>*/}
+                            </Grid>
+                        </Grid>
                     </Toolbar>
                 </AppBar>
             </ElevationScroll>
