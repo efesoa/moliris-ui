@@ -14,3 +14,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.active {
+  color: #ff8b00;
+  font-weight: lighter;
+}

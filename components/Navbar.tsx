@@ -1,18 +1,18 @@
 import * as React from 'react';
+import Link from "next/link";
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import CssBaseline from '@mui/material/CssBaseline';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
 import Fab from '@mui/material/Fab';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Zoom from '@mui/material/Zoom';
-import {Button, Divider, Grid, Menu, MenuItem, Popover, TextField} from "@mui/material";
-import { styled } from '@mui/material/styles'
-import Paper from '@mui/material/Paper'
+import {Button, Divider, Grid, Menu, TextField} from "@mui/material";
 import SwipeMenuDrawer from "./SwipeMenuDrawer";
+import {useRouter} from "next/router";
+import {createTheme, responsiveFontSizes, ThemeProvider} from '@mui/material/styles';
 
 
 interface Props {
@@ -69,13 +69,13 @@ function ScrollTop(props: Props) {
     );
 }
 
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-}));
+// const Item = styled(Paper)(({ theme }) => ({
+//     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+//     ...theme.typography.body2,
+//     padding: theme.spacing(1),
+//     textAlign: 'center',
+//     color: theme.palette.text.secondary,
+// }));
 
 function MouseOverPopover() {
     const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
@@ -98,7 +98,8 @@ function MouseOverPopover() {
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleOpen}
                 variant='outlined'
-                sx={{ textTransform: 'none' }}
+                sx={{ textTransform: 'none', color: '#808080', borderColor: '#808080',
+                    ':hover': { bgcolor: '#FFFFFF', borderColor: '#ff8b00'} }}
             >
                 Feedback
             </Button>
@@ -163,70 +164,85 @@ function MouseOverPopover() {
     );
 }
 
-const pages = ['Similarity', 'K-Similar Object', 'About'];
+const theme = createTheme({
+    typography: {
+        fontFamily: 'Ubuntu',
+    },
+});
+
 
 export default function Navbar(props: Props) {
+    const router = useRouter();
+
     return (
         <React.Fragment>
             <CssBaseline />
             <ElevationScroll {...props}>
-                <AppBar
-                sx={{ background: '#FFFFFF',
-                    color: '#808080',
-                    // alignItems: 'center',
-                    }}>
+                <AppBar sx={{ background: '#FFFFFF', color: '#808080' }}>
                     <Toolbar variant='dense'>
-                        <Typography variant="h6" sx={{ display: { xs: 'none', md: 'flex', lg: 'flex' }, pr: 10 }}>
-                            Moliris
-                        </Typography>
-                        <Box sx={{  display: { xs: 'none', md: 'flex', lg: 'flex' } }}>
-                            {pages.map((page) => (
-                            <Button
-                                key={page}
-                                variant="text"
-                                // onClick={handleCloseNavMenu}
-                                sx={{ m: 2,
-                                    px: 2,
-                                    textTransform: 'none',
-                                    color: '#808080',
-                                    // display: 'block',
-                                    ':hover': {
-                                        bgcolor: '#FFFFFF',
-                                        color: '#000000',
-                                    },
-                                }}
+                        <ThemeProvider theme={theme}>
+                            <Grid container
+                                  direction="row"
+                                  alignItems="center"
+                                  spacing={7}
+                                  sx={{ display: { xs: 'none', md: 'flex', lg: 'flex' }, py: 2 }}
                             >
-                                <Typography>
-                                    {page}
-                                </Typography>
-                            </Button>
-                        ))}
-                            {/*<TextField variant='outlined' size='small' sx={{ width: '15%', py: 2, ml: 'auto' }} placeholder='FeedBack' />*/}
-                        </Box>
-                        {/*<Box sx={{ flexGrow: 1 }} />*/}
-                        <Box sx={{ display: { xs: 'none', md: 'flex', lg: 'flex' }, ml: 'auto' }}>
-                            <MouseOverPopover />
-                        </Box>
+                                <Grid item>
+                                    <Typography variant="h6" sx={{ pr: 9 }}>
+                                        <Link href='/'  >
+                                            <a>Moliris</a>
+                                        </Link>
+                                    </Typography>
+                                </Grid>
+                                <Grid item>
+                                    <Typography sx={{ ':hover': {color: '#000000'} }} >
+                                        <Link href='/Similarity'  >
+                                            <a className={router.pathname == "/Similarity" ? "active" : ""} >Similarity</a>
+                                        </Link>
+                                    </Typography>
+                                </Grid>
+                                <Grid item>
+                                    <Typography sx={{ ':hover': {color: '#000000'} }}>
+                                        <Link href='/K-SimilarObject' >
+                                            <a className={router.pathname == "/K-SimilarObject" ? "active" : ""}>
+                                                K-Similar Object
+                                            </a>
+                                        </Link>
+                                    </Typography>
+                                </Grid>
+                                <Grid item>
+                                    <Typography sx={{ ':hover': {color: '#000000'} }}>
+                                        <Link href='/About' >
+                                            <a className={router.pathname == "/About" ? "active" : ""}>About</a>
+                                        </Link>
+                                    </Typography>
+                                </Grid>
+                                <Grid item sx={{ ml: 'auto' }}>
+                                    <MouseOverPopover />
+                                </Grid>
+                            </Grid>
 
-                        <Grid container
-                              direction="row"
-                              justifyContent="space-between"
-                              alignItems="center"
-                              sx={{ display: { xs: 'flex', md: 'none', lg: 'none'}, py: 2 }}
-                        >
-                            <Grid item >
-                                <SwipeMenuDrawer />
+                            <Grid container
+                                  direction="row"
+                                  justifyContent="space-between"
+                                  alignItems="center"
+                                  sx={{ display: { xs: 'flex', md: 'none', lg: 'none'}, py: 2 }}
+                            >
+                                <Grid item >
+                                    <SwipeMenuDrawer />
+                                </Grid>
+                                <Grid item >
+                                    <Typography variant="h6" >
+                                        <Link href='/'  >
+                                            <a>Moliris</a>
+                                        </Link>
+                                    </Typography>
+                                </Grid>
+                                <Grid item >
+                                    <MouseOverPopover />
+                                </Grid>
                             </Grid>
-                            <Grid item >
-                                <Typography variant="h6" >
-                                    Moliris
-                                </Typography>
-                            </Grid>
-                            <Grid item >
-                                <MouseOverPopover />
-                                {/*<Button>HI</Button>*/}
-                            </Grid>
-                        </Grid>
+                        </ThemeProvider>
                     </Toolbar>
                 </AppBar>
             </ElevationScroll>
