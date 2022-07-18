@@ -1,10 +1,11 @@
 import Navbar from "../components/Navbar";
 import styles from "../styles/Home.module.css";
-import {Box, Button, Grid, Table, TextField, Typography} from "@mui/material";
+import {Box, Button, Grid, TextField, Typography} from "@mui/material";
 import {useRef, useState} from "react";
 import axios from "axios";
 import Footer from "../components/Footer";
 import Dataset from "../components/Dataset";
+import SimilarityResult from "../components/SimilarityResult";
 
 export default function Similarity() {
     const [data, setData] = useState({
@@ -44,12 +45,14 @@ export default function Similarity() {
         );
     };
 
+    const [compute, setResult] = useState(null)
     const handleSubmit = async (e) => {
         e.preventDefault();
         await axios
             .post(`http://127.0.0.1:8000/measurements`, data)
             .then((response) => {
-                console.log(response);
+                const similarity = response.data;
+                setResult(similarity);
             })
             .catch((error) => {
                 if (error.response) {
@@ -63,12 +66,12 @@ export default function Similarity() {
             });
     };
 
-    const [dataset, getDataset] = useState(null)
+    const [dataset, setDataset] = useState(null)
     const showDataset = () => {
         axios.get('http://127.0.0.1:8000/dataset')
             .then((response) => {
                 const irisset = response.data;
-                getDataset(irisset);
+                setDataset(irisset);
             })
     }
 
@@ -167,6 +170,8 @@ export default function Similarity() {
                     </Grid>
                 </Grid>
             </form>
+
+            <SimilarityResult compute={compute} />
 
             <Button onClick={showDataset}>View DataSet</Button>
             <Dataset dataset={dataset}/>
