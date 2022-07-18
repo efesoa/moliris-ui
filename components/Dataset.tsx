@@ -87,8 +87,8 @@ export default function Dataset(props) {
         }
     }
     return(
-        <>
+        <p>
             {irisDataset (props.dataset)}
-        </>
+        </p>
     )
 }
