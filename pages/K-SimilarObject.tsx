@@ -1,7 +1,6 @@
 import Navbar from "../components/Navbar";
 import styles from "../styles/Home.module.css";
 import {Box, Button, Grid, TextField, Typography} from "@mui/material";
-import SimilarityResult from "../components/SimilarityResult";
 import Dataset from "../components/Dataset";
 import Footer from "../components/Footer";
 import {useRef, useState} from "react";
