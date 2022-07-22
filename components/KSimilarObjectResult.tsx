@@ -1,7 +1,10 @@
-import {Box, Grid} from "@mui/material";
+import {Box, Grid, Typography} from "@mui/material";
+import React from "react";
+import TableDisplay from "./TableDisplay";
 
-export default function KSimilarObjectResult(prop) {
-    const KSimilar = (compute) => {
+export default function KSimilarObjectResult(prop: { compute: any; }) {
+
+    const KSimilar = (compute: any[] | null) => {
         if (compute != null) {
             return(
                 <><br/>
@@ -22,37 +25,10 @@ export default function KSimilarObjectResult(prop) {
                             )}
 
                         if (index == 1) {
-                            return (<>
-                                {com.map(m => {
-                                    return(
-                                        <p>{m}</p>
-                                    )
-                                    })}</>
-                                // <Box boxShadow={2} sx={{ p:2, borderLeftColor: 'orange', borderRightColor: 'orange' }} borderLeft={3} borderRight={3} borderRadius={2}>
-                                //     <Grid container spacing={2}
-                                //           direction="row"
-                                //           justifyContent="center"
-                                //           alignItems="center"
-                                //     >
-                                //         <Grid item>
-                                //             Predicting Second Flower: <b>{com}</b>
-                                //         </Grid>
-                                //     </Grid>
-                                // </Box>
-                            )}
-
-                        if (index == 2) {
                             return (
                                 <Box boxShadow={2} sx={{ p:2, borderLeftColor: 'orange', borderRightColor: 'orange' }} borderLeft={3} borderRight={3} borderRadius={2}>
-                                    <Grid container spacing={2}
-                                          direction="row"
-                                          justifyContent="center"
-                                          alignItems="center"
-                                    >
-                                        <Grid item>
-                                            Cosine Similarity: <b>{com}</b>
-                                        </Grid>
-                                    </Grid>
+                                    <Typography><b>K-Nearest Flower(s)</b></Typography>
+                                    <TableDisplay dataset={com}/>
                                 </Box>
                             )}
                     })}<br/></>
