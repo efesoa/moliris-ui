@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import {useRef, useState} from "react";
 import axios from "axios";
 import KSimilarObjectResult from "../components/KSimilarObjectResult";
+import InputBox from "../components/InputBox";
 
 export default function KSimilarObject() {
     const [data, setData] = useState({
@@ -16,7 +17,7 @@ export default function KSimilarObject() {
         k: null,
     });
 
-    const handleChange = (e) => {
+    const handleChange = (e: { target: { value: string; name: any; }; }) => {
         const value = parseFloat(e.target.value);
         setData({
             ...data,
@@ -24,8 +25,8 @@ export default function KSimilarObject() {
         });
     };
 
-    const formClear = useRef();
-    const handleReset = e => {
+    const formClear: any = useRef();
+    const handleReset = (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         formClear.current.reset();
         setData(
@@ -40,7 +41,7 @@ export default function KSimilarObject() {
     };
 
     const [compute, setResult] = useState(null)
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
         await axios
             .post(`http://127.0.0.1:8000/similar_objects`, data)
@@ -85,35 +86,8 @@ export default function KSimilarObject() {
                       sx={{ my: 3 }}
                 >
                     <Grid item>
-                        <Box boxShadow={7} sx={{ p:2 }} borderRadius={5}>
-                            <Typography variant="h5" align='center'>
-                                Flower
-                            </Typography>
-                            <p>
-                                <label>Sepal Length</label><br/>
-                                <TextField type='number' name='sepal_length' value={data.sepal_length} size='small'
-                                           sx={{ width: '50%' }} onChange={handleChange}
-                                           inputProps={{ min: 0.1, step: 0.1, max: 10, required: 'true' }} />
-                            </p>
-                            <p>
-                                <label>Sepal Width</label><br/>
-                                <TextField type='number' name='sepal_width' value={data.sepal_width} size='small'
-                                           sx={{ width: '50%' }} onChange={handleChange}
-                                           inputProps={{ min: 0.1, step: 0.1, max: 10, required: 'true' }}/>
-                            </p>
-                            <p>
-                                <label>Petal Length</label><br/>
-                                <TextField type='number' name='petal_length' value={data.petal_length} size='small'
-                                           sx={{ width: '50%' }} onChange={handleChange}
-                                           inputProps={{ min: 0.1, step: 0.1, max: 10, required: 'true' }}/>
-                            </p>
-                            <p>
-                                <label>Petal Width</label><br/>
-                                <TextField type='number' name='petal_width' value={data.petal_width} size='small'
-                                           sx={{ width: '50%' }} onChange={handleChange}
-                                           inputProps={{ min: 0.1, step: 0.1, max: 10, required: 'true' }}/>
-                            </p>
-                        </Box>
+                        <InputBox name={'Flower'} sepal_l={'Sepal Length'} sepal_w={'Sepal Width'}
+                                  petal_l={'Petal Length'} petal_w={'Petal Width'} bx={1} data={data} handleChange={handleChange}/>
                     </Grid>
 
                     <Grid item>
