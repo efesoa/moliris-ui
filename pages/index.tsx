@@ -4,7 +4,20 @@ import styles from '../styles/Home.module.css'
 import Navbar from "../components/Navbar";
 import * as React from "react";
 import Footer from "../components/Footer";
+import Cards from "../components/Cards"
+import {Grid} from "@mui/material";
 
+interface specie {
+  image: string;
+  name: string;
+  description: string
+}
+
+const specieType: readonly specie[] = [
+  {image: '/static/images/white_iris.jpg', name: 'Bearded Iris', description: 'Hello'},
+  {image: '/static/images/purple.jpg', name: 'Aril Iris', description: 'Hello'},
+  {image: '/static/images/1.jpg', name: 'Beardless Iris', description: 'Hello'}
+]
 
 const Home: NextPage = () => {
   return (
@@ -20,6 +33,20 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Welcome to <a href="#">Moliris</a>
         </h1>
+
+        <Grid container
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+        >
+          {specieType.map(spec => {
+            return (
+                  <Grid item sx={{ p: 1 }}>
+                    <Cards image={spec.image} name={spec.name} description={spec.description} />
+                  </Grid>
+            )
+          })}
+        </Grid>
 
         <p className={styles.description}>
           Get started by editing{' '}
