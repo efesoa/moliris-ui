@@ -1,7 +1,7 @@
 import {Box, Grid} from "@mui/material";
 
-export default function SimilarityResult(prop) {
-    const Sim = (compute) => {
+export default function SimilarityResult(prop: { compute: any; }) {
+    const Sim = (compute: any[] | null) => {
         if (compute != null) {
             return(
                 <><br/>
