@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import * as React from "react";
 import Footer from "../components/Footer";
 import Cards from "../components/Cards"
-import {Grid} from "@mui/material";
+import {Grid, Typography} from "@mui/material";
 
 interface specie {
   image: string;
@@ -14,9 +14,9 @@ interface specie {
 }
 
 const specieType: readonly specie[] = [
-  {image: '/static/images/white_iris.jpg', name: 'Bearded Iris', description: 'Hello'},
-  {image: '/static/images/purple.jpg', name: 'Aril Iris', description: 'Hello'},
-  {image: '/static/images/1.jpg', name: 'Beardless Iris', description: 'Hello'}
+  {image: '/static/images/white_iris.jpg', name: 'Bearded Iris', description: 'Bearded Iris (Iris germanica) is an evergreen perennial rhizome found in well-drained soil from Southern and Central Europe.'},
+  {image: '/static/images/purple.jpg', name: 'Aril Iris', description: 'Arils, or aril irises, are wild bearded iris species found in semi-arid to desert climates from Central Asia to the Middle East.'},
+  {image: '/static/images/1.jpg', name: 'Beardless Iris', description: 'Beardless Iris is iris without a beard found from the southern areas of the temperate zone up to the edges of the frigid arctic.'}
 ]
 
 const Home: NextPage = () => {
@@ -34,6 +34,7 @@ const Home: NextPage = () => {
           Welcome to <a href="#">Moliris</a>
         </h1>
 
+          <Typography variant="h4"><b>Iris Categories</b></Typography>
         <Grid container
           direction="row"
           justifyContent="center"
