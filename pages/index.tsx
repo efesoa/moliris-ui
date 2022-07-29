@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import * as React from "react";
 import Footer from "../components/Footer";
 import Cards from "../components/Cards"
-import {Grid, Typography} from "@mui/material";
+import {Box, Grid, Typography} from "@mui/material";
 
 interface specie {
   image: string;
@@ -21,20 +21,34 @@ const specieType: readonly specie[] = [
 
 const Home: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Moliris</title>
         <meta name="description" content="Compute Similarities of objects" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main>
         <Navbar />
+
+        <Grid container
+              direction="row"
+              justifyContent="space-between"
+              alignItems="center"
+              sx={{ bgcolor: '#f6f5f5', height: 500 }} >
+          <Grid item className={styles.container}>
+            <Typography variant={'h4'}>Know what you have, feel the power</Typography>
+          </Grid>
+          <Grid item className={styles.container}>
+            <h1>World</h1>
+          </Grid>
+        </Grid>
+
         <h1 className={styles.title}>
           Welcome to <a href="#">Moliris</a>
         </h1>
 
-          <Typography variant="h4"><b>Iris Categories</b></Typography>
+        <Typography variant="h4"><b>Iris Categories</b></Typography>
         <Grid container
           direction="row"
           justifyContent="center"
