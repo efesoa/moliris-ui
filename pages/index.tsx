@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import * as React from "react";
 import Footer from "../components/Footer";
 import Cards from "../components/Cards"
-import {Box, Grid, Typography} from "@mui/material";
+import {Box, Button, Grid, Typography} from "@mui/material";
 
 interface specie {
   image: string;
@@ -28,7 +28,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className={styles.main}>
         <Navbar />
 
         <Grid container
@@ -38,6 +38,7 @@ const Home: NextPage = () => {
               sx={{ bgcolor: '#f6f5f5', height: 500 }} >
           <Grid item className={styles.container}>
             <Typography variant={'h4'}>Know what you have, feel the power</Typography>
+            <Button variant="contained" sx={{ bgcolor: 'linear-gradient(to right bottom, #f6f5f5, #6B0AC9)', textTransform: 'none' }} >Get Started</Button>
           </Grid>
           <Grid item className={styles.container}>
             <h1>World</h1>
