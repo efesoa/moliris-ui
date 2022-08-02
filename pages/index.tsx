@@ -6,6 +6,7 @@ import * as React from "react";
 import Footer from "../components/Footer";
 import Cards from "../components/Cards"
 import {Box, Button, Grid, Typography} from "@mui/material";
+import CardB from "../components/CardB";
 
 interface specie {
   image: string;
@@ -38,17 +39,25 @@ const Home: NextPage = () => {
               sx={{ bgcolor: '#f6f5f5', height: 500 }} >
           <Grid item className={styles.container}>
             <Typography variant={'h4'}>Know what you have, feel the power</Typography>
-            <Button variant="contained" sx={{ bgcolor: 'linear-gradient(to right bottom, #f6f5f5, #6B0AC9)', textTransform: 'none' }} >Get Started</Button>
+            <Typography variant={'h7'}>Perform iris flower similarities check using similarity metrics based on measurements</Typography>
+            <p><Button variant="contained" sx={{ background: 'linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%)',
+              bgcolor: 'red-orange', textTransform: 'none' }} size="large" ><b>Get Started</b></Button></p>
           </Grid>
           <Grid item className={styles.container}>
             <h1>World</h1>
           </Grid>
         </Grid>
 
-        <h1 className={styles.title}>
-          Welcome to <a href="#">Moliris</a>
-        </h1>
+        <Grid
+            container
+            direction="row"
+            justifyContent="center"
+            alignItems="baseline"
+        >
+          <CardB image={'/static/images/iris_logo.png'} name={'UCI Dataset'} description={'hello'}/>
+        </Grid>
 
+        <p></p>
         <Typography variant="h4"><b>Iris Categories</b></Typography>
         <Grid container
           direction="row"
