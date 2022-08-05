@@ -5,8 +5,8 @@ import Navbar from "../components/Navbar";
 import * as React from "react";
 import Footer from "../components/Footer";
 import Cards from "../components/Cards"
-import {Box, Button, Grid, Typography} from "@mui/material";
-import CardB from "../components/CardB";
+import { Box, Button, Grid, Typography} from "@mui/material";
+import BenefitBox from "../components/BenefitBox";
 
 interface specie {
   image: string;
@@ -18,6 +18,13 @@ const specieType: readonly specie[] = [
   {image: '/static/images/white_iris.jpg', name: 'Bearded Iris', description: 'Bearded Iris (Iris germanica) is an evergreen perennial rhizome found in well-drained soil from Southern and Central Europe.'},
   {image: '/static/images/purple.jpg', name: 'Aril Iris', description: 'Arils, or aril irises, are wild bearded iris species found in semi-arid to desert climates from Central Asia to the Middle East.'},
   {image: '/static/images/1.jpg', name: 'Beardless Iris', description: 'Beardless Iris is iris without a beard found from the southern areas of the temperate zone up to the edges of the frigid arctic.'}
+]
+
+const benefit: readonly specie[] = [
+  {image: '/static/images/white_iris.jpg', name: 'UCI Dataset', description: 'The UCI Machine Learning Repository is a collection of databases, domain theories, and data generators that are used by the machine learning community for the empirical analysis of machine learning algorithms.'},
+  {image: '/static/images/purple.jpg', name: 'Prediction', description: 'Prediction in machine learning refers to the output of an algorithm after it has been trained on a historical dataset and applied to new data when forecasting the likelihood of a particular outcome.'},
+  {image: '/static/images/1.jpg', name: 'Similarity Metric', description: 'similarity metric is a real-valued function that quantifies the similarity between two objects.'},
+  {image: '/static/images/1.jpg', name: 'Data Classifier', description: 'Data classification is the process of organizing data into categories that make it easy to retrieve, sort and store for future use.'}
 ]
 
 const Home: NextPage = () => {
@@ -53,8 +60,16 @@ const Home: NextPage = () => {
             direction="row"
             justifyContent="center"
             alignItems="baseline"
+            sx={{ background: 'linear-gradient( #f6f5f5 50%, white 50%)',
+              bgcolor: 'white' }}
         >
-          <CardB image={'/static/images/iris_logo.png'} name={'UCI Dataset'} description={'hello'}/>
+          {benefit.map(ben => {
+            return (
+                <Grid item sx={{ p: 1 }}>
+                  <BenefitBox image={ben.image} name={ben.name} description={ben.description} />
+                </Grid>
+            )
+          })}
         </Grid>
 
         <p></p>
