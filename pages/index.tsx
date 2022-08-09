@@ -21,10 +21,10 @@ const specieType: readonly specie[] = [
 ]
 
 const benefit: readonly specie[] = [
-  {image: '/static/images/white_iris.jpg', name: 'UCI Dataset', description: 'The UCI Machine Learning Repository is a collection of databases, domain theories, and data generators that are used by the machine learning community for the empirical analysis of machine learning algorithms.'},
-  {image: '/static/images/purple.jpg', name: 'Prediction', description: 'Prediction in machine learning refers to the output of an algorithm after it has been trained on a historical dataset and applied to new data when forecasting the likelihood of a particular outcome.'},
+  {image: '/static/images/dataset.png', name: 'UCI Dataset', description: 'The UCI Machine Learning Repository is a collection of databases, domain theories, and data generators that are used by the machine learning community for the empirical analysis of machine learning algorithms.'},
+  {image: '/static/images/predictive-model.png', name: 'Prediction', description: 'Prediction in machine learning refers to the output of an algorithm after it has been trained on a historical dataset and applied to new data when forecasting the likelihood of a particular outcome.'},
   {image: '/static/images/1.jpg', name: 'Similarity Metric', description: 'similarity metric is a real-valued function that quantifies the similarity between two objects.'},
-  {image: '/static/images/1.jpg', name: 'Data Classifier', description: 'Data classification is the process of organizing data into categories that make it easy to retrieve, sort and store for future use.'}
+  {image: '/static/images/classifier.png', name: 'Data Classifier', description: 'Data classification is the process of organizing data into categories that make it easy to retrieve, sort and store for future use.'}
 ]
 
 const Home: NextPage = () => {
