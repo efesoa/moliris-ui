@@ -13,6 +13,7 @@ import {Button, Divider, Grid, Menu, TextField} from "@mui/material";
 import SwipeMenuDrawer from "./SwipeMenuDrawer";
 import {useRouter} from "next/router";
 import {createTheme, responsiveFontSizes, ThemeProvider} from '@mui/material/styles';
+import {style} from "@mui/system";
 
 
 interface Props {
@@ -31,6 +32,7 @@ function ElevationScroll(props: Props) {
 
     return React.cloneElement(children, {
         elevation: trigger ? 4 : 0,
+        style: { backgroundColor: trigger ? '#fff' : '#eaeaea'}
     });
 }
 
@@ -99,7 +101,7 @@ function MouseOverPopover() {
                 onClick={handleOpen}
                 variant='outlined'
                 sx={{ textTransform: 'none', color: '#808080', borderColor: '#808080',
-                    ':hover': { bgcolor: '#FFFFFF', borderColor: '#ff8b00'} }}
+                    ':hover': { color: '#8973ff', borderColor: '#8973ff'} }}
             >
                 Feedback
             </Button>
@@ -178,7 +180,7 @@ export default function Navbar(props: Props) {
         <React.Fragment>
             <CssBaseline />
             <ElevationScroll {...props}>
-                <AppBar sx={{ background: '#FFFFFF', color: '#808080' }}>
+                <AppBar sx={{ color: '#808080' }}>
                     <Toolbar variant='dense'>
                         <ThemeProvider theme={theme}>
                             <Grid container
