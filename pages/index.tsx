@@ -5,8 +5,24 @@ import Navbar from "../components/Navbar";
 import * as React from "react";
 import Footer from "../components/Footer";
 import Cards from "../components/Cards"
-import { Box, Button, Grid, Typography} from "@mui/material";
+import { Button, Grid, Typography} from "@mui/material";
 import BenefitBox from "../components/BenefitBox";
+import {createTheme, ThemeProvider} from "@mui/material/styles";
+
+const theme = createTheme();
+
+theme.typography.h5 = {
+  fontSize: '2.5rem',
+  '@media (min-width:1000px)': {
+    fontSize: '2.5rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '2.8rem',
+  },
+  [theme.breakpoints.up('lg')]: {
+    fontSize: '3.1rem',
+  },
+};
 
 interface specie {
   image: string;
@@ -21,10 +37,10 @@ const specieType: readonly specie[] = [
 ]
 
 const benefit: readonly specie[] = [
-  {image: '/static/images/dataset.png', name: 'UCI Dataset', description: 'The UCI Machine Learning Repository is a collection of databases, domain theories, and data generators that are used by the machine learning community for the empirical analysis of machine learning algorithms.'},
-  {image: '/static/images/predictive-model.png', name: 'Prediction', description: 'Prediction in machine learning refers to the output of an algorithm after it has been trained on a historical dataset and applied to new data when forecasting the likelihood of a particular outcome.'},
-  {image: '/static/images/1.jpg', name: 'Similarity Metric', description: 'similarity metric is a real-valued function that quantifies the similarity between two objects.'},
-  {image: '/static/images/classifier.png', name: 'Data Classifier', description: 'Data classification is the process of organizing data into categories that make it easy to retrieve, sort and store for future use.'}
+  {image: '/static/images/dataset.png', name: 'UCI Dataset', description: 'Collection of databases, domain theories, and data generators from the UCI Machine Learning Repository for empirical analysis of machine learning algorithms.'},
+  {image: '/static/images/predictive-model.png', name: 'Prediction', description: 'Get real value predictions of data points using powerful machine learning algorithms.'},
+  {image: '/static/images/metric.png', name: 'Similarity Metric', description: 'Quantify the similarity between two objects.'},
+  {image: '/static/images/classifier.png', name: 'Data Classifier', description: 'Organize your data into categories that makes it easy to retrieve, sort and store for future use.'} //Data classification is the process of organizing data into categories that make it easy to retrieve, sort and store for future use
 ]
 
 const Home: NextPage = () => {
@@ -43,15 +59,26 @@ const Home: NextPage = () => {
               direction="row"
               justifyContent="space-between"
               alignItems="center"
-              sx={{ bgcolor: '#f6f5f5', height: 500 }} >
+              sx={{ bgcolor: '#eaeaea', py: 1 }} >
           <Grid item className={styles.container}>
-            <Typography variant={'h4'}>Know what you have, feel the power</Typography>
-            <Typography variant={'h7'}>Perform iris flower similarities check using similarity metrics based on measurements</Typography>
-            <p><Button variant="contained" sx={{ background: 'linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%)',
-              bgcolor: 'red-orange', textTransform: 'none' }} size="large" ><b>Get Started</b></Button></p>
+            <ThemeProvider theme={theme}>
+            <Typography variant={'h5'}>Know what you have,</Typography>
+            <Typography variant={'h5'}>Feel the power</Typography>
+            <Typography>Perform iris flower similarities check using</Typography>
+            <Typography >similarity metrics based on measurements</Typography>
+            </ThemeProvider>
+            <p><Button variant="contained" sx={{ background: 'linear-gradient(315deg, #5d37e0 30%, #8973ff 94%)',
+              bgcolor: '#8973ff', textTransform: 'none' }} size="large" ><b>Get Started</b></Button></p>
           </Grid>
-          <Grid item className={styles.container}>
-            <h1>World</h1>
+          <Grid item className={styles.container}
+                sx={{ display: { xs: 'none', md: 'flex', lg: 'none' } }}
+          >
+            <img src={'/static/images/iris-home.png'} style={{height: 400}}/>
+          </Grid>
+          <Grid item className={styles.container}
+                sx={{ display: { xs: 'none', md: 'none', lg: 'flex' } }}
+          >
+            <img src={'/static/images/iris-home.png'} style={{height: 500}}/>
           </Grid>
         </Grid>
 
@@ -60,7 +87,7 @@ const Home: NextPage = () => {
             direction="row"
             justifyContent="center"
             alignItems="baseline"
-            sx={{ background: 'linear-gradient( #f6f5f5 50%, white 50%)',
+            sx={{ background: 'linear-gradient( #eaeaea 50%, white 50%)',
               bgcolor: 'white' }}
         >
           {benefit.map(ben => {
