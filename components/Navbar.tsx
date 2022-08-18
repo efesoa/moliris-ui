@@ -13,7 +13,6 @@ import {Button, Divider, Grid, Menu, TextField} from "@mui/material";
 import SwipeMenuDrawer from "./SwipeMenuDrawer";
 import {useRouter} from "next/router";
 import {createTheme, responsiveFontSizes, ThemeProvider} from '@mui/material/styles';
-import {style} from "@mui/system";
 
 
 interface Props {
@@ -250,7 +249,7 @@ export default function Navbar(props: Props) {
             </ElevationScroll>
             <Toolbar id="back-to-top-anchor" />
             <ScrollTop {...props}>
-                <Fab color="primary" size="small" aria-label="scroll back to top">
+                <Fab sx={{ borderRadius: 2, bgcolor:'rgba(99,49,241,0.47)', ':hover': { bgcolor: '#8973ff'} }} size="small" aria-label="scroll back to top">
                     <KeyboardArrowUpIcon />
                 </Fab>
             </ScrollTop>
