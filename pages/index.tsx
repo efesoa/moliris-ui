@@ -37,10 +37,10 @@ const specieType: readonly specie[] = [
 ]
 
 const benefit: readonly specie[] = [
-  {image: '/static/images/dataset.png', name: 'UCI Dataset', description: 'Collection of databases, domain theories, and data generators from the UCI Machine Learning Repository for empirical analysis of machine learning algorithms.'},
-  {image: '/static/images/predictive-model.png', name: 'Prediction', description: 'Get real value predictions of data points using powerful machine learning algorithms.'},
-  {image: '/static/images/metric.png', name: 'Similarity Metric', description: 'Quantify the similarity between two objects.'},
-  {image: '/static/images/classifier.png', name: 'Data Classifier', description: 'Organize your data into categories that makes it easy to retrieve, sort and store for future use.'} //Data classification is the process of organizing data into categories that make it easy to retrieve, sort and store for future use
+  {image: '/static/images/dataset.png', name: 'DATA COLLECTION', description: 'Collection of databases, domain theories, and data generators from the UCI Machine Learning Repository for empirical analysis of machine learning algorithms.'},
+  {image: '/static/images/predictive-model.png', name: 'DATA ENTRY', description: 'Get real value predictions of data points using powerful machine learning algorithms.'},
+  {image: '/static/images/metric.png', name: 'COMPUTING', description: 'Quantify the similarity between two objects.'},
+  {image: '/static/images/classifier.png', name: 'RESULT', description: 'Organize your data into categories that makes it easy to retrieve, sort and store for future use.'} //Data classification is the process of organizing data into categories that make it easy to retrieve, sort and store for future use
 ]
 
 const Home: NextPage = () => {
@@ -53,13 +53,15 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <Navbar />
 
         <Grid container
               direction="row"
               justifyContent="space-between"
               alignItems="center"
-              sx={{ bgcolor: '#eaeaea', py: 1 }} >
+              sx={{ bgcolor: '#eaeaea', py: 4 }} >
+          <Grid item>
+            <Navbar />
+          </Grid>
           <Grid item className={styles.container}>
             <ThemeProvider theme={theme}>
             <Typography variant={'h5'}>Know what you have,</Typography>
@@ -84,20 +86,98 @@ const Home: NextPage = () => {
 
         <Grid
             container
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+            sx={{ paddingTop: 5 }}
+        >
+          <Grid item>
+            <Typography variant="caption" sx={{ color: '#b09eef' }}>WHAT WE OFFER</Typography>
+          </Grid>
+          <Grid item>
+            <Typography variant="h4" sx={{ color: '#603BE2' }}>Our Features</Typography>
+          </Grid>
+        </Grid>
+
+        <Grid
+            container
             direction="row"
             justifyContent="center"
-            alignItems="baseline"
-            sx={{ background: 'linear-gradient( #eaeaea 50%, white 50%)',
-              bgcolor: 'white' }}
+            alignItems="center"
+            sx={{ paddingTop: 3 }}
         >
-          {benefit.map(ben => {
-            return (
-                <Grid item sx={{ p: 1 }}>
-                  <BenefitBox image={ben.image} name={ben.name} description={ben.description} />
-                </Grid>
-            )
-          })}
+          <Grid item sx={{ px: 5, paddingBottom: 4 }}>
+            <BenefitBox image={'/static/images/dataset.png'} name={'UCI Dataset'} description={'Collection of databases, domain theories, and data generators from the UCI Machine Learning Repository for empirical analysis of machine learning algorithms.'} />
+          </Grid>
+          <Grid item sx={{ px: 5, paddingBottom: 4  }}>
+            <BenefitBox image={'/static/images/predictive-model.png'} name={'Prediction'} description={'Get real value predictions of data points using powerful machine learning algorithms.'} />
+          </Grid>
         </Grid>
+
+        <Grid
+            container
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+        >
+          <Grid item sx={{ px: 5, paddingBottom: 4 }}>
+            <BenefitBox image={'/static/images/metric.png'} name={'Similarity Metric'} description={'Quantify the similarity between two objects.'} />
+          </Grid>
+          <Grid item sx={{ px: 5, paddingBottom: 5 }}>
+            <BenefitBox image={'/static/images/classifier.png'} name={'Data Classifier'} description={'Organize your data into categories that makes it easy to retrieve, sort and store for future use.'} />
+          </Grid>
+        </Grid>
+
+        <Grid
+            sx={{ bgcolor: '#eaeaea' }}
+        >
+          <Grid
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              sx={{ paddingTop: 5 }}
+          >
+            <Grid item>
+              <Typography variant="caption" sx={{ color: '#b09eef' }}>STEP BY STEP</Typography>
+            </Grid>
+            <Grid item>
+              <Typography variant="h4" sx={{ color: '#603BE2' }}>HOW IT WORKS</Typography>
+            </Grid>
+          </Grid>
+
+          <Grid
+              container
+              direction="row"
+              justifyContent="center"
+              alignItems="baseline"
+          >
+            {benefit.map(ben => {
+              return (
+                  <Grid item sx={{ p: 1 }}>
+                    <BenefitBox image={ben.image} name={ben.name} description={ben.description} />
+                  </Grid>
+              )
+            })}
+          </Grid>
+        </Grid>
+
+        {/*<Grid*/}
+        {/*    container*/}
+        {/*    direction="row"*/}
+        {/*    justifyContent="center"*/}
+        {/*    alignItems="baseline"*/}
+        {/*    sx={{ background: 'linear-gradient( #eaeaea 50%, white 50%)',*/}
+        {/*      bgcolor: 'white' }}*/}
+        {/*>*/}
+        {/*  {benefit.map(ben => {*/}
+        {/*    return (*/}
+        {/*        <Grid item sx={{ p: 1 }}>*/}
+        {/*          <BenefitBox image={ben.image} name={ben.name} description={ben.description} />*/}
+        {/*        </Grid>*/}
+        {/*    )*/}
+        {/*  })}*/}
+        {/*</Grid>*/}
 
         <p></p>
         <Typography variant="h4"><b>Iris Categories</b></Typography>
