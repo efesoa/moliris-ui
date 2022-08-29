@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import * as React from "react";
 import Footer from "../components/Footer";
 import Cards from "../components/Cards"
-import { Button, Grid, Typography} from "@mui/material";
+import {Card, Button, CardMedia, Grid, Typography, CardActionArea} from "@mui/material";
 import BenefitBox from "../components/BenefitBox";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 
@@ -30,17 +30,26 @@ interface specie {
   description: string
 }
 
+interface work {
+  width: number;
+  height: number;
+  border: number;
+  image: string;
+  name: string;
+  description: string
+}
+
 const specieType: readonly specie[] = [
   {image: '/static/images/white_iris.jpg', name: 'Bearded Iris', description: 'Bearded Iris (Iris germanica) is an evergreen perennial rhizome found in well-drained soil from Southern and Central Europe.'},
   {image: '/static/images/purple.jpg', name: 'Aril Iris', description: 'Arils, or aril irises, are wild bearded iris species found in semi-arid to desert climates from Central Asia to the Middle East.'},
   {image: '/static/images/1.jpg', name: 'Beardless Iris', description: 'Beardless Iris is iris without a beard found from the southern areas of the temperate zone up to the edges of the frigid arctic.'}
 ]
 
-const benefit: readonly specie[] = [
-  {image: '/static/images/dataset.png', name: 'DATA COLLECTION', description: 'Collection of databases, domain theories, and data generators from the UCI Machine Learning Repository for empirical analysis of machine learning algorithms.'},
-  {image: '/static/images/predictive-model.png', name: 'DATA ENTRY', description: 'Get real value predictions of data points using powerful machine learning algorithms.'},
-  {image: '/static/images/metric.png', name: 'COMPUTING', description: 'Quantify the similarity between two objects.'},
-  {image: '/static/images/classifier.png', name: 'RESULT', description: 'Organize your data into categories that makes it easy to retrieve, sort and store for future use.'} //Data classification is the process of organizing data into categories that make it easy to retrieve, sort and store for future use
+const benefit: readonly work[] = [
+  {width: 200, height: 240, border: 0, image: '/static/images/collect.png', name: 'Data Collection', description: 'Collecting, measuring and analyzing accurate insights for research.'},
+  {width: 200, height: 240, border: 0, image: '/static/images/entry.png', name: 'Data Entry', description: 'Get real value predictions of data points using powerful machine learning algorithms.'},
+  {width: 200, height: 240, border: 0, image: '/static/images/compute.png', name: 'Computing', description: 'Quantify the similarity between two objects.'},
+  {width: 200, height: 240, border: 0, image: '/static/images/result.png', name: 'Result', description: 'Organize your data into categories that makes it easy to retrieve, sort and store for future use.'} //Data classification is the process of organizing data into categories that make it easy to retrieve, sort and store for future use
 ]
 
 const Home: NextPage = () => {
@@ -107,10 +116,10 @@ const Home: NextPage = () => {
             sx={{ paddingTop: 3 }}
         >
           <Grid item sx={{ px: 5, paddingBottom: 4 }}>
-            <BenefitBox image={'/static/images/dataset.png'} name={'UCI Dataset'} description={'Collection of databases, domain theories, and data generators from the UCI Machine Learning Repository for empirical analysis of machine learning algorithms.'} />
+            <BenefitBox width={300} height={340} border={1} image={'/static/images/dataset.png'} name={'UCI Dataset'} description={'Collection of databases, domain theories, and data generators from the UCI Machine Learning Repository for empirical analysis of machine learning algorithms.'} />
           </Grid>
           <Grid item sx={{ px: 5, paddingBottom: 4  }}>
-            <BenefitBox image={'/static/images/predictive-model.png'} name={'Prediction'} description={'Get real value predictions of data points using powerful machine learning algorithms.'} />
+            <BenefitBox width={300} height={340} border={1} image={'/static/images/predictive-model.png'} name={'Prediction'} description={'Get real value predictions of data points using powerful machine learning algorithms.'} />
           </Grid>
         </Grid>
 
@@ -121,15 +130,16 @@ const Home: NextPage = () => {
             alignItems="center"
         >
           <Grid item sx={{ px: 5, paddingBottom: 4 }}>
-            <BenefitBox image={'/static/images/metric.png'} name={'Similarity Metric'} description={'Quantify the similarity between two objects.'} />
+            <BenefitBox width={300} height={340} border={1} image={'/static/images/metric.png'} name={'Similarity Metric'} description={'Quantify the similarity between two objects.'} />
           </Grid>
           <Grid item sx={{ px: 5, paddingBottom: 5 }}>
-            <BenefitBox image={'/static/images/classifier.png'} name={'Data Classifier'} description={'Organize your data into categories that makes it easy to retrieve, sort and store for future use.'} />
+            <BenefitBox width={300} height={340} border={1} image={'/static/images/classifier.png'} name={'Data Classifier'} description={'Organize your data into categories that makes it easy to retrieve, sort and store for future use.'} />
           </Grid>
         </Grid>
 
         <Grid
-            sx={{ bgcolor: '#eaeaea' }}
+            container
+            sx={{ width: '100%', bgcolor: '#F3F0F0' }}
         >
           <Grid
               container
@@ -142,7 +152,7 @@ const Home: NextPage = () => {
               <Typography variant="caption" sx={{ color: '#b09eef' }}>STEP BY STEP</Typography>
             </Grid>
             <Grid item>
-              <Typography variant="h4" sx={{ color: '#603BE2' }}>HOW IT WORKS</Typography>
+              <Typography variant="h5" sx={{ color: '#603BE2' }}>HOW IT WORKS</Typography>
             </Grid>
           </Grid>
 
@@ -151,33 +161,58 @@ const Home: NextPage = () => {
               direction="row"
               justifyContent="center"
               alignItems="baseline"
+              sx={{ paddingBottom: 5 }}
           >
             {benefit.map(ben => {
               return (
-                  <Grid item sx={{ p: 1 }}>
-                    <BenefitBox image={ben.image} name={ben.name} description={ben.description} />
+                  <Grid item sx={{ px: 2 }}>
+                    <BenefitBox width={ben.width} height={ben.height} border={ben.border} image={ben.image} name={ben.name} description={ben.description} />
                   </Grid>
               )
             })}
           </Grid>
         </Grid>
 
-        {/*<Grid*/}
-        {/*    container*/}
-        {/*    direction="row"*/}
-        {/*    justifyContent="center"*/}
-        {/*    alignItems="baseline"*/}
-        {/*    sx={{ background: 'linear-gradient( #eaeaea 50%, white 50%)',*/}
-        {/*      bgcolor: 'white' }}*/}
-        {/*>*/}
-        {/*  {benefit.map(ben => {*/}
-        {/*    return (*/}
-        {/*        <Grid item sx={{ p: 1 }}>*/}
-        {/*          <BenefitBox image={ben.image} name={ben.name} description={ben.description} />*/}
-        {/*        </Grid>*/}
-        {/*    )*/}
-        {/*  })}*/}
-        {/*</Grid>*/}
+        <Grid
+            container
+            sx={{ width: '100%', bgcolor: '#F3F0F0' }}
+        >
+          <Grid
+              container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              sx={{ paddingTop: 5 }}
+          >
+            <Grid item>
+              <Typography variant="caption" sx={{ color: '#b09eef' }}>GET STARTED</Typography>
+            </Grid>
+            <Grid item>
+              <Typography variant="h5" sx={{ color: '#603BE2' }}>COMPUTE</Typography>
+            </Grid>
+          </Grid>
+          <Grid
+              container
+              direction="row"
+              justifyContent="center"
+              alignItems="baseline"
+              sx={{ background: 'linear-gradient( #F3F0F0 50%, white 50%)',
+                bgcolor: 'white' }}
+          >
+            <Card sx={{ minWidth: 200, minHeight: 250, borderRadius: 10, borderStartStartRadius: 10, borderEndEndRadius: 10 }}>
+              <CardActionArea>
+              <CardMedia
+                  component="img"
+                  height="140"
+                  src={'/static/images/1.jpg'}
+                  alt="iris flower"
+              />
+              </CardActionArea>
+            </Card>
+          </Grid>
+
+        </Grid>
+
 
         <p></p>
         <Typography variant="h4"><b>Iris Categories</b></Typography>
