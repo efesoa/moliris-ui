@@ -5,9 +5,10 @@ import Navbar from "../components/Navbar";
 import * as React from "react";
 import Footer from "../components/Footer";
 import Cards from "../components/Cards"
-import {Card, Button, CardMedia, Grid, Typography, CardActionArea} from "@mui/material";
+import {Button, Grid, Typography} from "@mui/material";
 import BenefitBox from "../components/BenefitBox";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
+import GetStartedCard from "../components/GetStartedCard";
 
 const theme = createTheme();
 
@@ -84,12 +85,12 @@ const Home: NextPage = () => {
           <Grid item className={styles.container}
                 sx={{ display: { xs: 'none', md: 'flex', lg: 'none' } }}
           >
-            <img src={'/static/images/iris-home.png'} style={{height: 400}}/>
+            <img alt={'Iris Flower'} src={'/static/images/iris-home.png'} style={{height: 400}}/>
           </Grid>
           <Grid item className={styles.container}
                 sx={{ display: { xs: 'none', md: 'none', lg: 'flex' } }}
           >
-            <img src={'/static/images/iris-home.png'} style={{height: 500}}/>
+            <img alt={'Iris Flower'} src={'/static/images/iris-home.png'} style={{height: 500}}/>
           </Grid>
         </Grid>
 
@@ -175,14 +176,18 @@ const Home: NextPage = () => {
 
         <Grid
             container
-            sx={{ width: '100%', bgcolor: '#F3F0F0' }}
+            direction="row"
+            justifyContent="center"
+            alignItems="baseline"
+            sx={{ background: 'linear-gradient( #eaeaea 60%, white 50%)',
+               paddingTop: 5 }}
         >
           <Grid
               container
               direction="column"
               justifyContent="center"
               alignItems="center"
-              sx={{ paddingTop: 5 }}
+              sx={{ paddingBottom: 1 }}
           >
             <Grid item>
               <Typography variant="caption" sx={{ color: '#b09eef' }}>GET STARTED</Typography>
@@ -191,24 +196,18 @@ const Home: NextPage = () => {
               <Typography variant="h5" sx={{ color: '#603BE2' }}>COMPUTE</Typography>
             </Grid>
           </Grid>
-          <Grid
-              container
-              direction="row"
-              justifyContent="center"
-              alignItems="baseline"
-              sx={{ background: 'linear-gradient( #F3F0F0 50%, white 50%)',
-                bgcolor: 'white' }}
+
+          <Grid container
+                direction="row"
+                justifyContent="center"
+                alignItems="center"
           >
-            <Card sx={{ minWidth: 200, minHeight: 250, borderRadius: 10, borderStartStartRadius: 10, borderEndEndRadius: 10 }}>
-              <CardActionArea>
-              <CardMedia
-                  component="img"
-                  height="140"
-                  src={'/static/images/1.jpg'}
-                  alt="iris flower"
-              />
-              </CardActionArea>
-            </Card>
+            <Grid item sx={{ px: 4, py: 3 }}>
+              <GetStartedCard image={'/static/images/1.jpg'} name={'SIMILARITY'}/>
+            </Grid>
+            <Grid item>
+              <GetStartedCard image={'/static/images/1.jpg'} name={'K SIMILAR OBJECT'}/>
+            </Grid>
           </Grid>
 
         </Grid>
