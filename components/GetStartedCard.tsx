@@ -16,8 +16,8 @@ export default function GetStartedCard(props: { image: string; name: string; }) 
                     alt={name}
                     sx={{ minWidth: 300, minHeight: 200, borderRadius: 10, borderStartStartRadius: 10, borderEndEndRadius: 10 }}
                 />
-                <CardContent align={'center'}>
-                    <Typography gutterBottom variant="h6">{name}</Typography>
+                <CardContent >
+                    <Typography gutterBottom variant="h6" align="center">{name}</Typography>
                 </CardContent>
             </CardActionArea>
         </Card>
