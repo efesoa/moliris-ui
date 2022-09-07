@@ -9,6 +9,7 @@ import {Button, Grid, Typography} from "@mui/material";
 import BenefitBox from "../components/BenefitBox";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import GetStartedCard from "../components/GetStartedCard";
+import CarouselSlider from "../components/CarouselSlider";
 
 const theme = createTheme();
 
@@ -212,6 +213,7 @@ const Home: NextPage = () => {
 
         </Grid>
 
+        <CarouselSlider/>
 
         <p></p>
         <Typography variant="h4"><b>Iris Categories</b></Typography>
