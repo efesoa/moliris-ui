@@ -75,8 +75,8 @@ const Home: NextPage = () => {
           </Grid>
           <Grid item className={styles.container}>
             <ThemeProvider theme={theme}>
-            <Typography variant={'h5'}>Know what you have,</Typography>
-            <Typography variant={'h5'}>Feel the power</Typography>
+            <Typography color={'#8973ff'} variant={'h5'}>Know what you have,</Typography>
+            <Typography color={'#8973ff'} variant={'h5'}>Feel the power</Typography>
             <Typography>Perform iris flower similarities check using</Typography>
             <Typography >similarity metrics based on measurements</Typography>
             </ThemeProvider>
