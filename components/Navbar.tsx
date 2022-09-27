@@ -12,7 +12,7 @@ import Zoom from '@mui/material/Zoom';
 import {Button, Divider, Grid, Menu, TextField} from "@mui/material";
 import SwipeMenuDrawer from "./SwipeMenuDrawer";
 import {useRouter} from "next/router";
-import {createTheme, responsiveFontSizes, ThemeProvider} from '@mui/material/styles';
+import {createTheme, ThemeProvider} from '@mui/material/styles';
 
 
 interface Props {
