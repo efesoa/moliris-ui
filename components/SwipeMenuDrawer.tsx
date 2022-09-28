@@ -57,7 +57,7 @@ export default function SwipeableMenuDrawer() {
 
     const router = useRouter();
 
-    const activeRoute = (routeName, currentRoute) => {
+    const activeRoute = (routeName: string, currentRoute: string) => {
         return routeName === currentRoute? true : false;
     }
 
