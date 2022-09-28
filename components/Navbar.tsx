@@ -17,7 +17,7 @@ import {createTheme, ThemeProvider} from '@mui/material/styles';
 
 interface Props {
     window?: () => Window;
-    children: React.ReactElement;
+    children: any;
 }
 
 function ElevationScroll(props: Props) {

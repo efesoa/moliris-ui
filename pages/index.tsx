@@ -57,6 +57,8 @@ const benefit: readonly work[] = [
 const Home: NextPage = () => {
   // @ts-ignore
   // @ts-ignore
+  // @ts-ignore
+  // @ts-ignore
   return (
     <div>
       <Head>
@@ -73,7 +75,7 @@ const Home: NextPage = () => {
               alignItems="center"
               sx={{ bgcolor: '#eaeaea', py: 4 }} >
           <Grid item>
-            <Navbar />
+            <Navbar  children={1}/>
           </Grid>
           <Grid item className={styles.container}>
             <ThemeProvider theme={theme}>
