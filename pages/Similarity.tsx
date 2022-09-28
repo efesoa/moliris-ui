@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import Dataset from "../components/Dataset";
 import SimilarityResult from "../components/SimilarityResult";
 import InputBox from "../components/InputBox";
+import * as React from "react";
 
 export default function Similarity() {
     const [data, setData] = useState({
@@ -78,7 +79,7 @@ export default function Similarity() {
 
     return (
         <div className={styles.container}>
-            <Navbar/><br/>
+            <Navbar  children={1}/><br/>
 
             <Typography variant="h4" align='center'>
                 Specify Two Flowers

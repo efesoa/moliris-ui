@@ -7,6 +7,7 @@ import {useRef, useState} from "react";
 import axios from "axios";
 import KSimilarObjectResult from "../components/KSimilarObjectResult";
 import InputBox from "../components/InputBox";
+import * as React from "react";
 
 export default function KSimilarObject() {
     const [data, setData] = useState({
@@ -72,7 +73,7 @@ export default function KSimilarObject() {
 
     return (
         <div className={styles.container}>
-            <Navbar/><br/>
+            <Navbar  children={1}/><br/>
 
             <Typography variant="h4" align='center'>
                 Specify a Flower
