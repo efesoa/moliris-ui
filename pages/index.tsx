@@ -55,6 +55,8 @@ const benefit: readonly work[] = [
 ]
 
 const Home: NextPage = () => {
+  // @ts-ignore
+  // @ts-ignore
   return (
     <div>
       <Head>
@@ -204,10 +206,10 @@ const Home: NextPage = () => {
                 alignItems="center"
           >
             <Grid item sx={{ px: 4, py: 3 }}>
-              <GetStartedCard link={'/Similarity'} image={'/static/images/1.jpg'} name={'SIMILARITY'}/>
+              <GetStartedCard  image={'/static/images/1.jpg'} name={'SIMILARITY'}/>
             </Grid>
             <Grid item>
-              <GetStartedCard link={'/K-SimilarObject'} image={'/static/images/1.jpg'} name={'K SIMILAR OBJECT'}/>
+              <GetStartedCard image={'/static/images/1.jpg'} name={'K SIMILAR OBJECT'}/>
             </Grid>
           </Grid>
 

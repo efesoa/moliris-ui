@@ -31,6 +31,10 @@ export default function TableDisplay(props: { dataset: object[] }){
         setPage(0);
     };
 
+    // @ts-ignore
+    // @ts-ignore
+    // @ts-ignore
+    // @ts-ignore
     return (
         <Paper sx={{width: '100%', overflow: 'hidden'}}>
             <TableContainer sx={{maxHeight: 440}}>
@@ -53,10 +57,11 @@ export default function TableDisplay(props: { dataset: object[] }){
                     <TableBody>
                         {dataset
                             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            .map((flower, index) => (
+                            .map((flower, index) => (// @ts-ignore
                                 <TableRow key={flower.name} hover sx={{ '&:last-child td, &:last-child th': { border: 0 } }} >
                                     <TableCell>{index + 1}</TableCell>
                                     {columns.map((column) => {
+                                        // @ts-ignore
                                         const value = flower[column.id];
                                         return (
                                             <TableCell key={column.id} align={column.align}>
