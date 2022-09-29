@@ -73,7 +73,7 @@ export default function KSimilarObject() {
 
     return (
         <div className={styles.container}>
-            <Navbar  children={1}/><br/>
+            <Navbar>children={1}</Navbar><br/>
 
             <Typography variant="h4" align='center'>
                 Specify a Flower

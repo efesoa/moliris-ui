@@ -79,7 +79,7 @@ export default function Similarity() {
 
     return (
         <div className={styles.container}>
-            <Navbar  children={1}/><br/>
+            <Navbar>children={1}</Navbar><br/>
 
             <Typography variant="h4" align='center'>
                 Specify Two Flowers

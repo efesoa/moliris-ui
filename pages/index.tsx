@@ -75,7 +75,7 @@ const Home: NextPage = () => {
               alignItems="center"
               sx={{ bgcolor: '#eaeaea', py: 4 }} >
           <Grid item>
-            <Navbar  children={1}/>
+            <Navbar>children={1}</Navbar>
           </Grid>
           <Grid item className={styles.container}>
             <ThemeProvider theme={theme}>
