@@ -162,21 +162,21 @@ const Home: NextPage = () => {
             </Grid>
           </Grid>
 
-          <Grid
-              container
-              direction="row"
-              justifyContent="center"
-              alignItems="baseline"
-              sx={{ paddingBottom: 5 }}
-          >
-            {benefit.map(ben => {
-              return (
-                  <Grid item sx={{ px: 2 }}>
-                    <BenefitBox width={ben.width} height={ben.height} border={ben.border} image={ben.image} name={ben.name} description={ben.description} />
-                  </Grid>
-              )
-            })}
-          </Grid>
+          {/*<Grid*/}
+          {/*    container*/}
+          {/*    direction="row"*/}
+          {/*    justifyContent="center"*/}
+          {/*    alignItems="baseline"*/}
+          {/*    sx={{ paddingBottom: 5 }}*/}
+          {/*>*/}
+          {/*  {benefit.map(ben => {*/}
+          {/*    return (*/}
+          {/*        <Grid item sx={{ px: 2 }}>*/}
+          {/*          <BenefitBox width={ben.width} height={ben.height} border={ben.border} image={ben.image} name={ben.name} description={ben.description} />*/}
+          {/*        </Grid>*/}
+          {/*    )*/}
+          {/*  })}*/}
+          {/*</Grid>*/}
         </Grid>
 
         <Grid
@@ -221,19 +221,19 @@ const Home: NextPage = () => {
 
         <p></p>
         <Typography variant="h4"><b>Iris Categories</b></Typography>
-        <Grid container
-          direction="row"
-          justifyContent="center"
-          alignItems="center"
-        >
-          {specieType.map(spec => {
-            return (
-                  <Grid item sx={{ p: 1 }}>
-                    <Cards image={spec.image} name={spec.name} description={spec.description} />
-                  </Grid>
-            )
-          })}
-        </Grid>
+        {/*<Grid container*/}
+        {/*  direction="row"*/}
+        {/*  justifyContent="center"*/}
+        {/*  alignItems="center"*/}
+        {/*>*/}
+        {/*  {specieType.map(spec => {*/}
+        {/*    return (*/}
+        {/*          <Grid item sx={{ p: 1 }}>*/}
+        {/*            <Cards image={spec.image} name={spec.name} description={spec.description} />*/}
+        {/*          </Grid>*/}
+        {/*    )*/}
+        {/*  })}*/}
+        {/*</Grid>*/}
 
         {/*<p className={styles.description}>*/}
         {/*  Get started by editing{' '}*/}
