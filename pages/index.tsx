@@ -55,10 +55,7 @@ const benefit: readonly work[] = [
 ]
 
 const Home: NextPage = () => {
-  // @ts-ignore
-  // @ts-ignore
-  // @ts-ignore
-  // @ts-ignore
+
   return (
     <div>
       <Head>
@@ -67,16 +64,18 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main>
 
         <Grid container
               direction="row"
               justifyContent="space-between"
               alignItems="center"
-              sx={{ bgcolor: '#eaeaea', py: 4 }} >
+              sx={{  backgroundColor: '#F3F0F0', py: 4 }}
+        >
           <Grid item>
             <Navbar>children={1}</Navbar>
           </Grid>
+
           <Grid item className={styles.container}>
             <ThemeProvider theme={theme}>
             <Typography color={'#8973ff'} variant={'h5'}>Know what you have,</Typography>
@@ -162,21 +161,21 @@ const Home: NextPage = () => {
             </Grid>
           </Grid>
 
-          {/*<Grid*/}
-          {/*    container*/}
-          {/*    direction="row"*/}
-          {/*    justifyContent="center"*/}
-          {/*    alignItems="baseline"*/}
-          {/*    sx={{ paddingBottom: 5 }}*/}
-          {/*>*/}
-          {/*  {benefit.map(ben => {*/}
-          {/*    return (*/}
-          {/*        <Grid item sx={{ px: 2 }}>*/}
-          {/*          <BenefitBox width={ben.width} height={ben.height} border={ben.border} image={ben.image} name={ben.name} description={ben.description} />*/}
-          {/*        </Grid>*/}
-          {/*    )*/}
-          {/*  })}*/}
-          {/*</Grid>*/}
+          <Grid
+              container
+              direction="row"
+              justifyContent="center"
+              alignItems="baseline"
+              sx={{ paddingBottom: 5 }}
+          >
+            {benefit.map((ben) => {
+              return (
+                  <Grid item sx={{ px: 2 }} key={ben.name}>
+                    <BenefitBox width={ben.width} height={ben.height} border={ben.border} image={ben.image} name={ben.name} description={ben.description} />
+                  </Grid>
+              )
+            })}
+          </Grid>
         </Grid>
 
         <Grid
