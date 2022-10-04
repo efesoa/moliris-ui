@@ -10,6 +10,7 @@ import BenefitBox from "../components/BenefitBox";
 import {createTheme, ThemeProvider} from "@mui/material/styles";
 import GetStartedCard from "../components/GetStartedCard";
 import CarouselSlider from "../components/CarouselSlider";
+import Image from 'next/image'
 
 const theme = createTheme();
 
@@ -67,34 +68,51 @@ const Home: NextPage = () => {
       <main>
 
         <Grid container
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              sx={{  backgroundColor: '#F4F8FF' }}
+        >
+          <Grid item className={styles.container}>
+            <Grid sx={{ display: { xs: 'inherit', sm: 'inherit', md: 'none', lg: 'none' }, paddingTop: 14 }}>
+            <ThemeProvider theme={theme}>
+              <Typography color={'#5D37E0'} variant={'h5'}>Know what you have,</Typography>
+              <Typography color={'#5D37E0'} variant={'h5'}>Feel the power</Typography>
+              <Typography>Perform iris flower similarities check using similarity metrics based on measurements</Typography>
+            </ThemeProvider>
+            <p><Button variant="contained" sx={{ background: 'linear-gradient(315deg, #5d37e0 30%, #8973ff 94%)',
+              bgcolor: '#8973ff', textTransform: 'none' }} size="large" ><b>Get Started</b></Button></p>
+            </Grid>
+          </Grid>
+        </Grid>
+
+        <Grid container
               direction="row"
               justifyContent="space-between"
               alignItems="center"
-              sx={{  backgroundColor: '#F3F0F0', py: 4 }}
+              sx={{  backgroundColor: '#F4F8FF', py: 4 }}
         >
           <Grid item>
             <Navbar>children={1}</Navbar>
           </Grid>
 
-          <Grid item className={styles.container}>
-            <ThemeProvider theme={theme}>
-            <Typography color={'#8973ff'} variant={'h5'}>Know what you have,</Typography>
-            <Typography color={'#8973ff'} variant={'h5'}>Feel the power</Typography>
-            <Typography>Perform iris flower similarities check using</Typography>
-            <Typography >similarity metrics based on measurements</Typography>
-            </ThemeProvider>
-            <p><Button variant="contained" sx={{ background: 'linear-gradient(315deg, #5d37e0 30%, #8973ff 94%)',
-              bgcolor: '#8973ff', textTransform: 'none' }} size="large" ><b>Get Started</b></Button></p>
+          <Grid item ><br/>
+            <Grid sx={{ display: { xs: 'none', sm: 'none', md: 'inherit', lg: 'inherit' } }}>
+              <ThemeProvider theme={theme}>
+              <Typography color={'#5D37E0'} variant={'h5'}>Know what you have,</Typography>
+              <Typography color={'#5D37E0'} variant={'h5'}>Feel the power</Typography>
+              <Typography>Perform iris flower similarities check using similarity</Typography>
+              <Typography >metrics based on measurements</Typography>
+              </ThemeProvider>
+              <p><Button variant="contained" sx={{ background: 'linear-gradient(315deg, #5d37e0 30%, #8973ff 94%)',
+                bgcolor: '#8973ff', textTransform: 'none' }} size="large" ><b>Get Started</b></Button></p>
+            </Grid>
           </Grid>
-          <Grid item className={styles.container}
-                sx={{ display: { xs: 'none', md: 'flex', lg: 'none' } }}
-          >
-            <img alt={'Iris Flower'} src={'/static/images/iris-home.png'} style={{height: 400}}/>
+          <Grid item className={styles.container} sx={{ display: { xs: 'none', sm: 'none', md: 'flex', lg: 'none' } }}>
+            <Image alt={'Iris Flower'} src={'/static/images/iris-home.png'} width={450} height={400}/>
           </Grid>
-          <Grid item className={styles.container}
-                sx={{ display: { xs: 'none', md: 'none', lg: 'flex' } }}
-          >
-            <img alt={'Iris Flower'} src={'/static/images/iris-home.png'} style={{height: 500}}/>
+          <Grid item className={styles.container} sx={{ display: { xs: 'none', sm: 'none', md: 'none', lg: 'flex' } }}>
+            <Image alt={'Iris Flower'} src={'/static/images/iris-home.png'} width={550} height={500}/>
           </Grid>
         </Grid>
 
@@ -103,42 +121,85 @@ const Home: NextPage = () => {
             direction="column"
             justifyContent="center"
             alignItems="center"
-            sx={{ paddingTop: 5 }}
+            sx={{ paddingTop: 5, paddingBottom: 3 }}
         >
           <Grid item>
-            <Typography variant="caption" sx={{ color: '#b09eef' }}>WHAT WE OFFER</Typography>
+            <Typography variant="caption" sx={{ color: '#333436' }}>WHAT WE OFFER</Typography>
           </Grid>
           <Grid item>
-            <Typography variant="h4" sx={{ color: '#603BE2' }}>Our Features</Typography>
+            <Typography variant="h4" sx={{ color: '#000000' }}>Our Features</Typography>
           </Grid>
         </Grid>
 
-        <Grid
-            container
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-            sx={{ paddingTop: 3 }}
-        >
-          <Grid item sx={{ px: 5, paddingBottom: 4 }}>
-            <BenefitBox width={300} height={340} border={1} image={'/static/images/dataset.png'} name={'UCI Dataset'} description={'Collection of databases, domain theories, and data generators from the UCI Machine Learning Repository for empirical analysis of machine learning algorithms.'} />
+        <Grid sx={{ display: { xs: 'none', sm: 'none', md: 'inherit', lg: 'inherit' } }}>
+          <Grid
+              container
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+          >
+            <Grid item sx={{ px: 9, paddingBottom: 4 }}>
+              <BenefitBox width={340} height={340} border={1} image={'/static/images/dataset.png'} name={'UCI Dataset'}
+                          description={'Collection of databases, domain theories, and data generators from the UCI Machine Learning Repository for empirical analysis of machine learning algorithms.'}
+                          bLeftRadius={8} bRightRadius={100} tLeftRadius={8} tRightRadius={8}/>
+            </Grid>
+            <Grid item sx={{ px: 9, paddingBottom: 4  }}>
+              <BenefitBox width={340} height={340} border={1} image={'/static/images/predictive-model.png'} name={'Prediction'}
+                          description={'Get real value predictions of data points using powerful machine learning algorithms.'}
+                          bLeftRadius={100} bRightRadius={8} tLeftRadius={8} tRightRadius={8}/>
+            </Grid>
           </Grid>
-          <Grid item sx={{ px: 5, paddingBottom: 4  }}>
-            <BenefitBox width={300} height={340} border={1} image={'/static/images/predictive-model.png'} name={'Prediction'} description={'Get real value predictions of data points using powerful machine learning algorithms.'} />
+          <Grid
+              container
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+          >
+            <Grid item sx={{ px: 9, paddingBottom: 4 }}>
+              <BenefitBox width={340} height={340} border={1} image={'/static/images/metric.png'} name={'Similarity Metric'}
+                          description={'Quantify the similarity between two objects.'} bLeftRadius={8} bRightRadius={8} tLeftRadius={8} tRightRadius={100}/>
+            </Grid>
+            <Grid item sx={{ px: 9, paddingBottom: 5 }}>
+              <BenefitBox width={340} height={340} border={1} image={'/static/images/classifier.png'} name={'Data Classifier'}
+                          description={'Organize your data into categories that makes it easy to retrieve, sort and store for future use.'}
+                          bLeftRadius={8} bRightRadius={8} tLeftRadius={100} tRightRadius={8}/>
+            </Grid>
           </Grid>
         </Grid>
 
-        <Grid
-            container
-            direction="row"
-            justifyContent="center"
-            alignItems="center"
-        >
-          <Grid item sx={{ px: 5, paddingBottom: 4 }}>
-            <BenefitBox width={300} height={340} border={1} image={'/static/images/metric.png'} name={'Similarity Metric'} description={'Quantify the similarity between two objects.'} />
+        <Grid sx={{ display: { xs: 'inherit', sm: 'inherit', md: 'none', lg: 'none' } }}>
+          <Grid
+              container
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+          >
+            <Grid item sx={{ px: 9, paddingBottom: 4 }}>
+              <BenefitBox width={300} height={340} border={1} image={'/static/images/dataset.png'} name={'UCI Dataset'}
+                          description={'Collection of databases, domain theories, and data generators from the UCI Machine Learning Repository for empirical analysis of machine learning algorithms.'}
+                          bLeftRadius={8} bRightRadius={100} tLeftRadius={8} tRightRadius={8}/>
+            </Grid>
+            <Grid item sx={{ px: 9, paddingBottom: 4  }}>
+              <BenefitBox width={300} height={340} border={1} image={'/static/images/predictive-model.png'} name={'Prediction'}
+                          description={'Get real value predictions of data points using powerful machine learning algorithms.'}
+                          bLeftRadius={100} bRightRadius={8} tLeftRadius={8} tRightRadius={8}/>
+            </Grid>
           </Grid>
-          <Grid item sx={{ px: 5, paddingBottom: 5 }}>
-            <BenefitBox width={300} height={340} border={1} image={'/static/images/classifier.png'} name={'Data Classifier'} description={'Organize your data into categories that makes it easy to retrieve, sort and store for future use.'} />
+          <Grid
+              container
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+          >
+            <Grid item sx={{ px: 5, paddingBottom: 4 }}>
+              <BenefitBox width={300} height={340} border={1} image={'/static/images/metric.png'} name={'Similarity Metric'}
+                          description={'Quantify the similarity between two objects.'} bLeftRadius={8} bRightRadius={8} tLeftRadius={8} tRightRadius={100}/>
+            </Grid>
+            <Grid item sx={{ px: 5, paddingBottom: 5 }}>
+              <BenefitBox width={300} height={340} border={1} image={'/static/images/classifier.png'} name={'Data Classifier'}
+                          description={'Organize your data into categories that makes it easy to retrieve, sort and store for future use.'}
+                          bLeftRadius={8} bRightRadius={8} tLeftRadius={100} tRightRadius={8}/>
+            </Grid>
           </Grid>
         </Grid>
 
@@ -171,7 +232,8 @@ const Home: NextPage = () => {
             {benefit.map((ben) => {
               return (
                   <Grid item sx={{ px: 2 }} key={ben.name}>
-                    <BenefitBox width={ben.width} height={ben.height} border={ben.border} image={ben.image} name={ben.name} description={ben.description} />
+                    <BenefitBox width={ben.width} height={ben.height} border={ben.border} image={ben.image} name={ben.name}
+                                description={ben.description} bLeftRadius={0} bRightRadius={0} tLeftRadius={0} tRightRadius={0} />
                   </Grid>
               )
             })}
