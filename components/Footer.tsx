@@ -1,4 +1,4 @@
-import {Box, Divider, Grid} from "@mui/material";
+import {Grid} from "@mui/material";
 import Link from "next/link";
 import Typography from "@mui/material/Typography";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
@@ -12,7 +12,7 @@ export default function Footer(){
             <Grid container
                   justifyContent="space-around"
                   alignItems="center"
-                  sx={{ background: '#FFFFFF', color: '#808080' }}
+                  sx={{ color: '#808080' }}
             >
                 <Grid item>
                     <Typography variant="h6">
