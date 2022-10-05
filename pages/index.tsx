@@ -11,6 +11,7 @@ import {createTheme, ThemeProvider} from "@mui/material/styles";
 import GetStartedCard from "../components/GetStartedCard";
 import CarouselSlider from "../components/CarouselSlider";
 import Image from 'next/image'
+import IrisAccordion from "../components/IrisAccordion";
 
 const theme = createTheme();
 
@@ -129,6 +130,9 @@ const Home: NextPage = () => {
           <Grid item>
             <Typography variant="h4" sx={{ color: '#000000' }}>Our Features</Typography>
           </Grid>
+          <Grid item>
+              <Image src={'/static/images/down-arrow.png'} width={120} height={9}/>
+          </Grid>
         </Grid>
 
         <Grid sx={{ display: { xs: 'none', sm: 'none', md: 'inherit', lg: 'inherit' } }}>
@@ -205,7 +209,7 @@ const Home: NextPage = () => {
 
         <Grid
             container
-            sx={{ width: '100%', bgcolor: '#F3F0F0' }}
+            sx={{ width: '100%' }}
         >
           <Grid
               container
@@ -215,10 +219,13 @@ const Home: NextPage = () => {
               sx={{ paddingTop: 5 }}
           >
             <Grid item>
-              <Typography variant="caption" sx={{ color: '#b09eef' }}>STEP BY STEP</Typography>
+              <Typography variant="caption" sx={{ color: '#333436' }}>STEP BY STEP</Typography>
             </Grid>
             <Grid item>
-              <Typography variant="h5" sx={{ color: '#603BE2' }}>HOW IT WORKS</Typography>
+              <Typography variant="h5" sx={{ color: '#000000' }}>HOW IT WORKS</Typography>
+            </Grid>
+            <Grid item>
+              <Image src={'/static/images/down-arrow.png'} width={120} height={9}/>
             </Grid>
           </Grid>
 
@@ -245,7 +252,7 @@ const Home: NextPage = () => {
             direction="row"
             justifyContent="center"
             alignItems="baseline"
-            sx={{ background: 'linear-gradient( #eaeaea 60%, white 50%)',
+            sx={{ background: 'linear-gradient( #F5F5F5 60%, white 50%)',
                paddingTop: 5 }}
         >
           <Grid
@@ -256,10 +263,13 @@ const Home: NextPage = () => {
               sx={{ paddingBottom: 1 }}
           >
             <Grid item>
-              <Typography variant="caption" sx={{ color: '#b09eef' }}>GET STARTED</Typography>
+              <Typography variant="caption" sx={{ color: '#333436' }}>GET STARTED</Typography>
             </Grid>
             <Grid item>
-              <Typography variant="h5" sx={{ color: '#603BE2' }}>COMPUTE</Typography>
+              <Typography variant="h5" sx={{ color: '#000000' }}>COMPUTE</Typography>
+            </Grid>
+            <Grid item>
+              <Image src={'/static/images/down-arrow.png'} width={80} height={9}/>
             </Grid>
           </Grid>
 
@@ -280,8 +290,22 @@ const Home: NextPage = () => {
 
         <CarouselSlider/>
 
-        <p></p>
-        <Typography variant="h4"><b>Iris Categories</b></Typography>
+        <Grid
+            container
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+            sx={{ paddingTop: 5, paddingBottom: 3 }}
+        >
+          <Grid item sx={{ paddingBottom: 2 }}>
+            <Typography variant="h5" sx={{ color: '#000000' }}>IRIS SPECIES</Typography>
+          </Grid>
+          <Grid item className={styles.container}>
+            <IrisAccordion/>
+          </Grid>
+        </Grid>
+
+        {/*<Typography variant="h4"><b>Iris Categories</b></Typography>*/}
         {/*<Grid container*/}
         {/*  direction="row"*/}
         {/*  justifyContent="center"*/}
