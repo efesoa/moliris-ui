@@ -1,5 +1,4 @@
 import Navbar from "../components/Navbar";
-import styles from "../styles/Home.module.css";
 import {Button, Grid, Typography} from "@mui/material";
 import {useRef, useState} from "react";
 import axios from "axios";
@@ -8,6 +7,7 @@ import Dataset from "../components/Dataset";
 import SimilarityResult from "../components/SimilarityResult";
 import InputBox from "../components/InputBox";
 import * as React from "react";
+import Image from "next/image";
 
 export default function Similarity() {
     const [data, setData] = useState({
@@ -78,8 +78,53 @@ export default function Similarity() {
     }
 
     return (
-        <div className={styles.container}>
-            <Navbar>children={1}</Navbar><br/>
+        <div>
+            <Navbar>children={1}</Navbar>
+            <Grid container
+                  direction="row"
+                  justifyContent="center"
+                  alignItems="center"
+                sx={{  background: 'url(/static/images/similarity.jpg)',backgroundPosition: 'bottom', height: 500 }}
+            >
+                <Grid item>
+                    <Typography variant="h2" sx={{ color: '#ffffff' }}>SIMILARITY</Typography>
+                </Grid>
+            </Grid>
+
+            <Grid
+                container
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+                sx={{ paddingTop: 5, paddingBottom: 3 }}
+            >
+                <Grid item>
+                    <Typography variant="h5" sx={{ color: '#3B722F' }}>HINT</Typography>
+                </Grid>
+                <Grid item>
+                    <Grid
+                        container
+                        direction="row"
+                        justifyContent="space-around"
+                        alignItems="flex-start"
+                    >
+                        <Grid item sx={{ paddingTop: 1 }}>
+                            <Image src={'/static/images/hint.png'} width={250} height={200}/>
+                        </Grid>
+                        <Grid item sx={{ px: 3, paddingTop: 1 }}>
+                            <Typography>
+                                {/*<Image src={'/static/images/dot.png'} width={5} height={5} style={{ paddingBottom: 3, paddingRight: 1 }}/>*/}
+                                Measure the length and width of the flower petal or copy from a dataset.
+                            </Typography><br/>
+                            <Typography>
+                                {/*<Image src={'/static/images/dot.png'} width={5} height={5} style={{ paddingBottom: 3, paddingRight: 1 }}/>*/}
+                                               Measure the length and width of the flower sepal or copy from a dataset.
+                            </Typography>
+                        </Grid>
+
+                    </Grid>
+                </Grid>
+            </Grid>
 
             <Typography variant="h4" align='center'>
                 Specify Two Flowers
@@ -105,10 +150,10 @@ export default function Similarity() {
                 </Grid>
                 <Grid container spacing={2} alignItems="center" justifyContent="center">
                     <Grid item>
-                        <Button type="submit" variant="contained">Compute</Button>
+                        <Button type="submit" variant="contained" size={'large'} sx={{ backgroundColor: '#5D37E0' }}>Compute</Button>
                     </Grid>
                     <Grid item>
-                        <Button type="reset" variant="contained"
+                        <Button type="reset" variant="contained" size={'large'}
                                 sx={{ color: '#808080', bgcolor: 'white',
                                     ':hover': { bgcolor: 'rgba(234,229,229,0.38)' } }}
                                 onClick={handleReset}
@@ -120,8 +165,10 @@ export default function Similarity() {
             </form>
 
             <SimilarityResult compute={compute} />
-
-            <Button onClick={showDataset}>View DataSet</Button>
+            <Grid container justifyContent="center" alignItems="center" sx={{ paddingTop: 5, paddingBottom: 3 }}>
+                <Button onClick={showDataset} variant="outlined" size={'large'} sx={{ height: 50, borderRadius: 2,
+                    color: '#5D37E0', borderColor: '#5D37E0'  }}>View DataSet</Button>
+            </Grid>
             <Dataset dataset={dataset}/>
 
             <Footer/>
