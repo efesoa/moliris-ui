@@ -12,6 +12,7 @@ import GetStartedCard from "../components/GetStartedCard";
 import CarouselSlider from "../components/CarouselSlider";
 import Image from 'next/image'
 import IrisAccordion from "../components/IrisAccordion";
+import Box from "@mui/material/Box";
 
 const theme = createTheme();
 
@@ -56,6 +57,29 @@ const benefit: readonly work[] = [
   {width: 200, height: 240, border: 0, image: '/static/images/result.png', name: 'Result', description: 'Organize your data into categories that makes it easy to retrieve, sort and store for future use.'} //Data classification is the process of organizing data into categories that make it easy to retrieve, sort and store for future use
 ]
 
+function ScrollToGetStarted() {
+
+  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    const anchor = (
+        (event.target as HTMLDivElement).ownerDocument || document
+    ).querySelector('#get-started');
+
+    if (anchor) {
+      anchor.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    }
+  };
+
+  return (
+        <Box onClick={handleClick}>
+          <Button variant="contained" sx={{ background: 'linear-gradient(315deg, #5d37e0 30%, #8973ff 94%)',
+            textTransform: 'none', height: 50 }} size="large" ><b>Get Started</b></Button>
+        </Box>
+  );
+}
+
 const Home: NextPage = () => {
 
   return (
@@ -81,8 +105,7 @@ const Home: NextPage = () => {
               <Typography color={'#5D37E0'} variant={'h5'}>Feel the power</Typography>
               <Typography>Perform iris flower similarities check using similarity metrics based on measurements</Typography>
             </ThemeProvider>
-            <p><Button variant="contained" sx={{ background: 'linear-gradient(315deg, #5d37e0 30%, #8973ff 94%)',
-              bgcolor: '#8973ff', textTransform: 'none' }} size="large" ><b>Get Started</b></Button></p>
+            <p><ScrollToGetStarted/></p>
             </Grid>
           </Grid>
         </Grid>
@@ -105,8 +128,7 @@ const Home: NextPage = () => {
               <Typography>Perform iris flower similarities check using similarity</Typography>
               <Typography >metrics based on measurements</Typography>
               </ThemeProvider>
-              <p><Button variant="contained" sx={{ background: 'linear-gradient(315deg, #5d37e0 30%, #8973ff 94%)',
-                bgcolor: '#8973ff', textTransform: 'none' }} size="large" ><b>Get Started</b></Button></p>
+              <p><ScrollToGetStarted/></p>
             </Grid>
           </Grid>
           <Grid item className={styles.container} sx={{ display: { xs: 'none', sm: 'none', md: 'flex', lg: 'none' } }}>
@@ -178,12 +200,12 @@ const Home: NextPage = () => {
               justifyContent="center"
               alignItems="center"
           >
-            <Grid item sx={{ px: 9, paddingBottom: 4 }}>
+            <Grid item sx={{ paddingBottom: 4 }}>
               <BenefitBox width={300} height={340} border={1} image={'/static/images/dataset.png'} name={'UCI Dataset'}
                           description={'Collection of databases, domain theories, and data generators from the UCI Machine Learning Repository for empirical analysis of machine learning algorithms.'}
                           bLeftRadius={8} bRightRadius={100} tLeftRadius={8} tRightRadius={8}/>
             </Grid>
-            <Grid item sx={{ px: 9, paddingBottom: 4  }}>
+            <Grid item sx={{ paddingBottom: 4  }}>
               <BenefitBox width={300} height={340} border={1} image={'/static/images/predictive-model.png'} name={'Prediction'}
                           description={'Get real value predictions of data points using powerful machine learning algorithms.'}
                           bLeftRadius={100} bRightRadius={8} tLeftRadius={8} tRightRadius={8}/>
@@ -195,11 +217,11 @@ const Home: NextPage = () => {
               justifyContent="center"
               alignItems="center"
           >
-            <Grid item sx={{ px: 5, paddingBottom: 4 }}>
+            <Grid item sx={{ paddingBottom: 4 }}>
               <BenefitBox width={300} height={340} border={1} image={'/static/images/metric.png'} name={'Similarity Metric'}
                           description={'Quantify the similarity between two objects.'} bLeftRadius={8} bRightRadius={8} tLeftRadius={8} tRightRadius={100}/>
             </Grid>
-            <Grid item sx={{ px: 5, paddingBottom: 5 }}>
+            <Grid item sx={{ paddingBottom: 5 }}>
               <BenefitBox width={300} height={340} border={1} image={'/static/images/classifier.png'} name={'Data Classifier'}
                           description={'Organize your data into categories that makes it easy to retrieve, sort and store for future use.'}
                           bLeftRadius={8} bRightRadius={8} tLeftRadius={100} tRightRadius={8}/>
@@ -253,7 +275,8 @@ const Home: NextPage = () => {
             justifyContent="center"
             alignItems="baseline"
             sx={{ background: 'linear-gradient( #F5F5F5 60%, white 50%)',
-               paddingTop: 5 }}
+               paddingTop: 5, paddingBottom: 5 }}
+            id="get-started"
         >
           <Grid
               container
@@ -275,14 +298,15 @@ const Home: NextPage = () => {
 
           <Grid container
                 direction="row"
-                justifyContent="center"
+                justifyContent="space-evenly"
                 alignItems="center"
+                className={styles.container}
           >
-            <Grid item sx={{ px: 4, py: 3 }}>
-              <GetStartedCard  image={'/static/images/1.jpg'} name={'SIMILARITY'}/>
+            <Grid item sx={{ paddingBottom: 2 }}>
+              <GetStartedCard  image={'/static/images/similarity.jpg'} name={'SIMILARITY'} go={'/Similarity'}/>
             </Grid>
             <Grid item>
-              <GetStartedCard image={'/static/images/1.jpg'} name={'K SIMILAR OBJECT'}/>
+              <GetStartedCard image={'/static/images/k-similar.jpg'} name={'K-SIMILAR OBJECT'} go={'/K-SimilarObject'}/>
             </Grid>
           </Grid>
 
