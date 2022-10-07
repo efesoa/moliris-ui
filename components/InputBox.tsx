@@ -5,7 +5,7 @@ export default function InputBox(props: { name: string; sepal_l: string; sepal_w
     const Boxes = () => {
         if (bx == 1) {
             return(
-                <Box boxShadow={7} sx={{ p:2 }} borderRadius={5}>
+                <Box boxShadow={7} sx={{ p:2, minWidth: 280 }} borderRadius={5}>
                     <Typography variant="h5" align='center'>
                         {name}
                     </Typography>
@@ -37,7 +37,7 @@ export default function InputBox(props: { name: string; sepal_l: string; sepal_w
             )}
         if (bx == 2) {
             return(
-                <Box boxShadow={7} sx={{ p:2 }} borderRadius={5}>
+                <Box boxShadow={7} sx={{ p:2, minWidth: 280 }} borderRadius={5}>
                     <Typography variant="h5" align='center'>
                         {name}
                     </Typography>
