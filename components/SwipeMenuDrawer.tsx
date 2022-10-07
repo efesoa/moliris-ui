@@ -87,21 +87,6 @@ export default function SwipeableMenuDrawer() {
                     </Link>
                 ))}
             </List>
-
-            <Divider />
-            <List>
-                {routes.map((item, index) => (
-                    <Link  href={item.path} style={{ textDecoration: 'none', color: 'black' }} key={item.id}>
-                        <MenuItem selected={activeRoute(item.path, router.pathname)}>
-                            <ListItem button key={item.id} >
-                                {/*<ListItemIcon> <item.icon /> </ListItemIcon>*/}
-                                <ListItemText primary={item.label} />
-                            </ListItem>
-                        </MenuItem>
-                    </Link>
-
-                ))}
-            </List>
         </Box>
     );
 
