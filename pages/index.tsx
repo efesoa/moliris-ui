@@ -43,12 +43,6 @@ interface work {
   description: string
 }
 
-const specieType: readonly specie[] = [
-  {image: '/static/images/white_iris.jpg', name: 'Bearded Iris', description: 'Bearded Iris (Iris germanica) is an evergreen perennial rhizome found in well-drained soil from Southern and Central Europe.'},
-  {image: '/static/images/purple.jpg', name: 'Aril Iris', description: 'Arils, or aril irises, are wild bearded iris species found in semi-arid to desert climates from Central Asia to the Middle East.'},
-  {image: '/static/images/1.jpg', name: 'Beardless Iris', description: 'Beardless Iris is iris without a beard found from the southern areas of the temperate zone up to the edges of the frigid arctic.'}
-]
-
 const benefit: readonly work[] = [
   {width: 200, height: 240, border: 0, image: '/static/images/collect.png', name: 'Data Collection', description: 'Collecting, measuring and analyzing accurate insights for research.'},
   {width: 200, height: 240, border: 0, image: '/static/images/entry.png', name: 'Data Entry', description: 'Get real value predictions of data points using powerful machine learning algorithms.'},
