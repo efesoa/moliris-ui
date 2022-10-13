@@ -16,6 +16,10 @@ a {
 }
 
 .active {
-  color: #ff8b00;
+  color: #5D37E0;
+  border: 0 solid;
+  border-radius: 2px;
+  border-bottom-width: 3px;
+  padding-bottom: 6px;
   font-weight: lighter;
 }
