@@ -31,10 +31,6 @@ export default function TableDisplay(props: { dataset: object[] }){
         setPage(0);
     };
 
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
-    // @ts-ignore
     return (
         <Paper sx={{width: '100%', overflow: 'hidden'}}>
             <TableContainer sx={{maxHeight: 440}}>
