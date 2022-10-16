@@ -73,8 +73,8 @@ const Home: NextPage = () => {
     <div>
       <Head>
         <title>Moliris</title>
-        <meta name="description" content="Compute Similarities of objects" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="Compute Object-Object Similarities" />
+        <link rel="icon" href="/static/images/iris_logo.png" />
       </Head>
 
       <main>
