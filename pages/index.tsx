@@ -28,12 +28,6 @@ theme.typography.h5 = {
   },
 };
 
-interface specie {
-  image: string;
-  name: string;
-  description: string
-}
-
 interface work {
   width: number;
   height: number;
